@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Client {
+    -ImageCalcul imageCalcul
+
+    +ajouterServiceCalcul(ServiceCalcul sc) : void
+    +demanderCalcul(Image image, int nbCalc) : Calcul
+    +fractionner(Image image, int nbcalc) : ImageCalcul
+
+}
+
+class ServiceCalcul {
+    +calculer(calcul) : void
+    +estDispo() : boolean
+}
+
+class ImageCalcul {
+    List<Calcul> calculs
+}
+
+class Calcul {
+    Image image
+    int id
+    Image resultat
+}
+
+@enduml
