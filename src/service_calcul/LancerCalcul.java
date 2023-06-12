@@ -6,10 +6,25 @@ import java.rmi.registry.LocateRegistry;
 
 public class LancerCalcul
 {
+    public static String aide = """
+            Noeud de calcul pour le raytracer (https://en.wikipedia.org/wiki/Ray_tracing_(graphics))
+            Usage : java LancerCalcul [port-annuaire] [port-annuaire]
+            \tport-annuaire : le port où est accessible l'annuaire (par défaut 1099)
+            \tport-annuaire : le port où sera accessible le service (par défaut 0)
+            """;
+
     public static void main(String[]args) throws RemoteException
     {
         //--- Gestion des numéros de ports en paramètres du programme ---
         int portService = 0, portAnnuaire = 1099;
+
+        if(args.length > 0) {
+            portAnnuaire = Integer.parseInt(args[0]);
+            if(args.length > 1)
+                portService = Integer.parseInt(args[1]);
+        } else {
+            System.out.println(aide);
+        }
 
         //--- Gestion de la connexion RMI ---
         try {
@@ -23,9 +38,9 @@ public class LancerCalcul
             Registry reg = LocateRegistry.getRegistry(portAnnuaire);
 
             //On associe le service à un nom dans l'annuaire
-            reg.rebind("NomDuServiceDansLAnnuaire", serviceInterface);
+            reg.rebind("noeudCalcul", serviceInterface);
 
-            System.out.println("Service accessible depuis l'annuaire");
+            System.out.println("Service noeudCalcul accessible depuis l'annuaire");
         }
         catch (java.rmi.server.ExportException e)
         {

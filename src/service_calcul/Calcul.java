@@ -8,6 +8,12 @@ import java.time.Instant;
 
 public class Calcul implements CalculInterface
 {
+    public static String aide = "Raytracer : synthèse d'image par lancé de rayons (https://en.wikipedia.org/wiki/Ray_tracing_(graphics))\n\n" +
+            "Usage : java LancerRaytracer [fichier-scène] [largeur] [hauteur]\n" +
+            "\tfichier-scène : la description de la scène (par défaut simple.txt)\n" +
+            "\tlargeur : largeur de l'image calculée (par défaut 512)\n" +
+            "\thauteur : hauteur de l'image calculée (par défaut 512)\n";
+
     public Calcul() throws RemoteException
     {
         //code à exécuter à la création de l'objet (affectations...)
