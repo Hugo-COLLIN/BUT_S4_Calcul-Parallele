@@ -1,6 +1,8 @@
 package raytracer;
-import java.util.*;
+
 import java.io.*;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Scene implements Serializable{
 

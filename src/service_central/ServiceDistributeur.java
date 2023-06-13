@@ -1,6 +1,6 @@
-package service_central;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 public interface ServiceDistributeur extends Remote {
 
@@ -8,12 +8,12 @@ public interface ServiceDistributeur extends Remote {
      * permet de recuperer un service de calcule
      * @return
      */
-    public ServiceCalcule demanderService();
+    public CalculInterface demanderService() throws RemoteException;
 
 
     /**
      * permet d'ajouter ou supprimer des ServiceCalcule
      */
-    public void addCalcule(ServiceCalcule serviceCalcule);
-    public void deleteCalcule(ServiceCalcule serviceCalcule);
+    public void addCalcule(CalculInterface serviceCalcule) throws RemoteException;
+    public void deleteCalcule(CalculInterface serviceCalcule) throws RemoteException;
 }

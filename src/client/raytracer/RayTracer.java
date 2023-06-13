@@ -1,8 +1,6 @@
 package raytracer;
 
-import java.awt.image.BufferedImage;
-import java.awt.Color;
-import java.io.*;
+import java.io.Serializable;
 
 
 public class RayTracer implements Serializable {

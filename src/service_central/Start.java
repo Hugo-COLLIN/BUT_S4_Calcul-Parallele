@@ -1,5 +1,3 @@
-package service_central;
-
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.AccessException;
 import java.rmi.RemoteException;
@@ -10,8 +8,11 @@ import java.rmi.registry.LocateRegistry;
 public class Start {
     public static void main(String[] args) {
         try {
+            // Creating service
             Distributeur object = new Distributeur();
-            ServiceDistributeur rd = (ServiceDistributeur)UnicastRemoteObject.exportObject(object,0);
+            ServiceDistributeur rd = (ServiceDistributeur)UnicastRemoteObject.exportObject(object,4553);
+
+            // Creating Registry and adding service
             Registry reg = LocateRegistry.createRegistry(Integer.parseInt(args[0]));
             reg.rebind("distributeur", rd);
             System.out.println("Service and Registry started");

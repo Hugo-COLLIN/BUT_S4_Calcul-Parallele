@@ -1,5 +1,6 @@
 package raytracer;
-import java.io.*;
+
+import java.io.Serializable;
 /** Classe définissant les caractéristiques d'un matériau. Ces caractéristiques
  * sont adaptées au modèle de réflexion de Phong et incluent les coefficients de
  * réflexion (ambiante, diffuse et spéculaire) pour chaque longueur d'onde

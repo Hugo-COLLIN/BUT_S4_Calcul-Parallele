@@ -1,8 +1,7 @@
+
 import raytracer.Image;
 import raytracer.Scene;
-
 import java.rmi.RemoteException;
-import java.rmi.server.ServerNotActiveException;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -14,30 +13,23 @@ public class Calcul implements CalculInterface
             "\tlargeur : largeur de l'image calculée (par défaut 512)\n" +
             "\thauteur : hauteur de l'image calculée (par défaut 512)\n";
 
-    public Calcul() throws RemoteException
-    {
-        //code à exécuter à la création de l'objet (affectations...)
-    }
 
     /**
      * @param scene
-     * @param x
-     * @param y
-     * @param l
-     * @param h
-     * @throws RemoteException
-     * @throws ServerNotActiveException
+     *      Image scene
+     * @param coor
+     *      coordinates of the image part to calculate
      */
     @Override
-    public Image calculer(Scene scene, int x, int y, int l, int h) throws RemoteException, ServerNotActiveException {
+    public Image calculer(Scene scene, Coordonnees coor) throws RemoteException{
         // Chronométrage du temps de calcul
         Instant debut = Instant.now();
-        System.out.println("Calcul de l'image :\n - Coordonnées : "+ x +","+ y +"\n - Taille "+ l + "x" + h);
-        Image image = scene.compute(x, y, l, h);
+        System.out.println("Calcul de l'image :\n - Coordonnées : "+ coor.x +","+ coor.y +"\n - Taille "+ coor.l + "x" + coor.h);
+        Image image = scene.compute(coor.x, coor.y,coor.l, coor.h);
         Instant fin = Instant.now();
 
         long duree = Duration.between(debut, fin).toMillis();
-
+        System.out.println("Image calculated in " + duree);
         return image;
     }
 }
