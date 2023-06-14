@@ -2,16 +2,11 @@
 'https://plantuml.com/class-diagram
 
 class Client {
-    -ImageCalcul imageCalcul
-
-    +ajouterServiceCalcul(ServiceCalcul sc) : void
-    +demanderCalcul(Image image, int nbCalc) : Calcul
-    +fractionner(Image image, int nbcalc) : ImageCalcul
-
+    +calculer(int nbParties):ImageCalcul
 }
 
 class ServiceCalcul {
-    +calculer(calcul) : void
+    +calculer(Calcul calcul) : void
     +estDispo() : boolean
 }
 
@@ -24,5 +19,16 @@ class Calcul {
     int id
     Image resultat
 }
+
+class Server {
+    +demanderCalcul(Image image, int nbCalc) : Calcul
+}
+
+ServiceCalcul <-- Calcul
+Client <-- ServiceCalcul
+Client <-- ImageCalcul
+Client <-- Calcul
+Calcul <-- ImageCalcul
+
 
 @enduml
