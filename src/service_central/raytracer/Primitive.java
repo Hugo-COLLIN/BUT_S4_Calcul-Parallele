@@ -1,6 +1,6 @@
 package raytracer;
-
-import java.io.Serializable;
+import java.awt.Color;
+import java.io.*;
 /** Classe abstraite commune à tous les primitives géométriques pouvant
  * apparaître dans une scène. Cette classe ne contient aucune information
  * concernant la géométrie de l'objet. Par contre elle contient les informations

@@ -1,7 +1,7 @@
 package raytracer;
 
-import java.awt.*;
-import java.io.Serializable;
+import java.awt.Color;
+import java.io.*;
 
 public class Intensite implements Serializable {
 

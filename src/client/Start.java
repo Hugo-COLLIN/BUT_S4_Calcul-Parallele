@@ -23,11 +23,10 @@ public class Start {
 
         // Settings
         int Length = 512;
-        int nbPart = 1;
+        int nbPart = 100;
         String scenePath = "./simple.txt";
 
         // Start image calcule
-        System.out.println("Here 1");
         Client.calculerImage(dist,scenePath,nbPart,Length);
     }
 }
