@@ -29,6 +29,7 @@ Client <-- ServiceCalcul
 Client <-- ImageCalcul
 Client <-- Calcul
 Calcul <-- ImageCalcul
-
+Server <-- Client
+Server <-- ServiceCalcul
 
 @enduml
