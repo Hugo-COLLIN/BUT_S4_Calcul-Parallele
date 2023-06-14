@@ -1,6 +1,5 @@
 package raytracer;
-
-import java.io.Serializable;
+import java.io.*;
 
 /**
  * Classe qui représente un point dans un espace 3D

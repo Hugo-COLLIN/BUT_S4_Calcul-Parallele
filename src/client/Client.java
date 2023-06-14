@@ -11,15 +11,18 @@ public class Client {
     public static List<Coordonnees> splitImage(int nbPart, int taille){
         int nbLongPart = (int) (Math.sqrt(nbPart));
         int partLength = taille/nbLongPart;
-        int x = 0;
+        System.out.println("" + nbLongPart + "  " + partLength);
+        int x;
         int y = 0;
         List<Coordonnees> res = new ArrayList<>();
         for (int i=0; i<nbLongPart; i++){
+            x=0;
             for (int j=0; j<nbLongPart; j++){
                 res.add(new Coordonnees(x,y,partLength,partLength));
-                x++;
+                x+= partLength;
+
             }
-            y++;
+            y+= partLength;
         }
         return res;
     }
@@ -49,7 +52,6 @@ public class Client {
                         CalculInterface calcService = null;
 
                         try {
-                            System.out.println("here2");
                             calcService = distributeur.demanderService();
                         } catch (RemoteException e) {
                             System.out.println("Server Not enable");
@@ -59,8 +61,10 @@ public class Client {
 
                         // Calcule image
                         try {
-                            System.out.println(calcService);
-                            disp.setImage(calcService.calculer(scene, coor), coor.x, coor.y);
+                            raytracer.Image image = calcService.calculer(scene, coor);
+                            System.out.printf(coor.x +" " + coor.y);
+                            System.out.printf(image.toString() + "\n");
+                            disp.setImage(image, coor.x, coor.y);
                             calc = true;
                         }catch (RemoteException r){
                             System.out.println("Failed to make calcul");

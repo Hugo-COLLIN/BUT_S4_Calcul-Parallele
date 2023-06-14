@@ -9,7 +9,7 @@ public class Distributeur implements ServiceDistributeur {
     @Override
     public CalculInterface demanderService() throws RemoteException {
         indice++;
-        if (indice <= services.size()){
+        if (indice >= services.size()){
             indice = 0;
         }
 
