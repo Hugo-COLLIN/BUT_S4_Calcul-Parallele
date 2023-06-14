@@ -1,8 +1,6 @@
 package raytracer;
-import java.awt.Color;
-import java.lang.Math;
 
-/** classe des polygones CONVEXES 
+/** classe des polygones CONVEXES
  */
 public class Polygone extends Primitive {
 

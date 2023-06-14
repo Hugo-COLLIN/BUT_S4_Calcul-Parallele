@@ -1,6 +1,6 @@
+import java.rmi.NotBoundException;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.RemoteException;
-
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 
@@ -16,15 +16,7 @@ public class LancerCalcul
     public static void main(String[]args) throws RemoteException
     {
         //--- Gestion des numéros de ports en paramètres du programme ---
-        int portService = 0, portAnnuaire = 1099;
-
-        if(args.length > 0) {
-            portAnnuaire = Integer.parseInt(args[0]);
-            if(args.length > 1)
-                portService = Integer.parseInt(args[1]);
-        } else {
-            System.out.println(aide);
-        }
+        int portService = 0;
 
         //--- Gestion de la connexion RMI ---
         try {
@@ -34,23 +26,23 @@ public class LancerCalcul
             //On met le service à disposition via un port de la machine
             CalculInterface serviceInterface = (CalculInterface) UnicastRemoteObject.exportObject(service, portService);
 
-            //On récupère l'annuaire via le numero de port où il est accessible
-            Registry reg = LocateRegistry.getRegistry(portAnnuaire);
+            // Getting central service
+            Registry reg = LocateRegistry.getRegistry(args[0], 4552);
+            ServiceDistributeur dist = (ServiceDistributeur) reg.lookup("distributeur");
 
-            //On associe le service à un nom dans l'annuaire
-            reg.rebind("noeudCalcul", serviceInterface);
+            // Register to the Central service
+            dist.addCalcule(serviceInterface);
 
-            System.out.println("Service noeudCalcul accessible depuis l'annuaire");
-        }
-        catch (java.rmi.server.ExportException e)
-        {
+            System.out.println("Service noeudCalcul Started");
+        }catch (java.rmi.server.ExportException e) {
             System.err.println("Port " + portService + " déjà utilisé : impossible d'y affecter le service");
             System.exit(-1);
+        }catch (RemoteException r){
+            System.out.println("Failed to add calcule to serveer");
+            r.printStackTrace();
         }
-        catch (java.rmi.ConnectException e)
-        {
-            System.err.println("Impossible de récupérer l'annuaire sur le port " + portAnnuaire);
-            System.exit(-1); //sinon le programme ne s'arrête pas après l'exception
+         catch (NotBoundException e) {
+            System.out.println("Failed to get central Service named 'Distibuteur' ");
         }
     }
 }
