@@ -69,18 +69,18 @@ public class Client {
                         }catch (RemoteException r){
                             System.out.println("Failed to make calcul");
                             r.printStackTrace();
-//                            try {
-//                                distributeur.deleteCalcule(calcService);
-//                            } catch (RemoteException e) {
-//                                throw new RuntimeException(e);
-//                            }
+                            try {
+                                distributeur.deleteCalcule(calcService);
+                            } catch (RemoteException e) {
+                                throw new RuntimeException(e);
+                            }
                             System.out.println("Sevice deleted");
                         } catch (ServerNotActiveException e) {
-//                            try {
-//                                distributeur.deleteCalcule(calcService);
-//                            } catch (RemoteException ex) {
-//                                throw new RuntimeException(ex);
-//                            }
+                            try {
+                                distributeur.deleteCalcule(calcService);
+                            } catch (RemoteException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             System.out.println("Sevice deleted");
                         }
                     }
