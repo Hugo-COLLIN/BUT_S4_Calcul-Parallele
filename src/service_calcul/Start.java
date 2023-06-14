@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 
-public class LancerCalcul
+public class Start
 {
     public static String aide = """
             Noeud de calcul pour le raytracer (https://en.wikipedia.org/wiki/Ray_tracing_(graphics))
