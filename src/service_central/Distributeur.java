@@ -7,7 +7,8 @@ public class Distributeur implements ServiceDistributeur {
     int indice = 0;
 
     @Override
-    public CalculInterface demanderService() throws RemoteException {
+    public synchronized CalculInterface demanderService() throws RemoteException {
+        System.out.println();
         indice++;
         if (indice >= services.size()){
             indice = 0;
@@ -17,16 +18,24 @@ public class Distributeur implements ServiceDistributeur {
     }
 
     @Override
-    public void addCalcule(CalculInterface serviceCalcule) throws RemoteException {
-        services.add(serviceCalcule);
-        System.out.println(serviceCalcule);
-        System.out.println("Service added");
+    public synchronized void  addCalcule(CalculInterface serviceCalcule) throws RemoteException {
+        synchronized (services){
+            services.add(serviceCalcule);
+            System.out.println(serviceCalcule);
+            System.out.println("Service added");
+        }
+
+
     }
 
     @Override
-    public void deleteCalcule(CalculInterface serviceCalcule) throws RemoteException {
-        services.remove(serviceCalcule);
-        System.out.println("Service deleted");
+    public synchronized void deleteCalcule(CalculInterface serviceCalcule) throws RemoteException {
+        synchronized (services){
+            services.remove(serviceCalcule);
+            System.out.println("Service deleted");
+        }
+
     }
+
 
 }
