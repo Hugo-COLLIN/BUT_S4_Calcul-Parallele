@@ -1,6 +1,5 @@
 package raytracer;
-
-import java.io.Serializable;
+import java.io.*;
 /** Classe permettant la représentation d'une source ponctuelle. Une source
  * est caractérisée par sa position dans l'espace et ses valeurs d'intensité 
  * selon les composantes RVB.

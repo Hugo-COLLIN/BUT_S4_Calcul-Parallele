@@ -1,9 +1,9 @@
 package raytracer;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.Color;
 import java.io.*;
+import java.util.Date;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 /**
  * Permet de stocker et de manipuler une image (sous forme d'une grille
