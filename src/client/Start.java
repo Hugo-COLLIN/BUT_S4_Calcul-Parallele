@@ -53,8 +53,9 @@ public class Start {
             }else {
                 System.out.println(COMMAND_HELP);
             }
-
         }
+
+        System.exit(0);
 
 
     }
