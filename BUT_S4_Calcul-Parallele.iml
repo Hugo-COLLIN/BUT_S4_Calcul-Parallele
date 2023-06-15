@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/client" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/service_central" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/service_calcul" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bin_jdk_IUT" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
