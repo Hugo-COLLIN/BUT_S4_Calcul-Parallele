@@ -4,8 +4,12 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class Start {
+    public  static  final String COMMAND_HELP = "Error in command : Incorrect name or parameters number";
+    public  static  final String COMMAND_INFO = "Please enter following command, choose parameters's value : 'run [width] [heigth] [number of part]'";
     public static void main(String[] args) {
         ServiceDistributeur dist = null;
         try {
@@ -21,12 +25,37 @@ public class Start {
             System.exit(0);
         }
 
-        // Settings
-        int Length = 512;
-        int nbPart = 100;
-        String scenePath = "./simple.txt";
+        Scanner sc = new Scanner(System.in);
 
-        // Start image calcule
-        Client.calculerImage(dist,scenePath,nbPart,Length);
+        String carac = "";
+        while (carac != "q"){
+            System.out.println(COMMAND_INFO);
+            String command = sc.nextLine();
+
+            String[] arguments = command.split(" ");
+
+            for (String intem : arguments){
+                System.out.println(intem);
+            }
+            System.out.println("length :" + arguments.length);
+
+            if (Objects.equals(arguments[0], "run") && arguments.length == 4) {
+                // Settings
+                int width = Integer.parseInt(arguments[1]);
+                int heigth = Integer.parseInt(arguments[2]);
+                int nbPart = Integer.parseInt(arguments[3]);
+                String scenePath = "./simple.txt";
+
+                System.out.println("path");
+
+                // Start image calcule
+                Client.calculerImage(dist,scenePath,nbPart,width, heigth);
+            }else {
+                System.out.println(COMMAND_HELP);
+            }
+
+        }
+
+
     }
 }

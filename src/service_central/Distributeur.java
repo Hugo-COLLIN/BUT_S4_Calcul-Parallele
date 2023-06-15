@@ -8,6 +8,11 @@ public class Distributeur implements ServiceDistributeur {
 
     @Override
     public synchronized CalculInterface demanderService() throws RemoteException {
+        // check if any services exist
+        if (services.isEmpty()) {
+            return null;
+        }
+
         System.out.println();
         indice++;
         if (indice >= services.size()){
