@@ -23,4 +23,6 @@ Server <-- Client : demanderCalcul
 Client <-- Server : serviceCalcul
 Server <-- Client : supprimerCalcul
 
+ServiceCalcul --> Server : enregistrement
+
 @enduml
